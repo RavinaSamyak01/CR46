@@ -1,6 +1,5 @@
 package CR46;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -69,12 +68,22 @@ public class CR46 {
 		WebDriverWait wait = new WebDriverWait(driver, 50);
 
 		for (int i = 0; i < 4; i++) {
-			// String PASSWORDALL = "Fedex123";
-			// Production
-			String PASSWORDALL = "password";
-			String PASSWORDS3 = "password3";
-			driver.get("https://www.fedexsameday.com/specialsupport.aspx");
-
+			String Env = storage.getProperty("Env");
+			String Password = null;
+			if (Env.equalsIgnoreCase("Pre-Prod")) {
+				String baseUrl = storage.getProperty("PREPRODURL");
+				driver.get(baseUrl);
+				Password = storage.getProperty("PREPRODPassword");
+			} else if (Env.equalsIgnoreCase("STG")) {
+				String baseUrl = storage.getProperty("STGURL");
+				driver.get(baseUrl);
+				Password = storage.getProperty("STGPassword");
+			} else if (Env.equalsIgnoreCase("DEV")) {
+				String baseUrl = storage.getProperty("DEVURL");
+				driver.get(baseUrl);
+				Password = storage.getProperty("DEVPassword");
+			}
+			Thread.sleep(2000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtUserId")));
 			wait.until(ExpectedConditions.elementToBeClickable(By.id("txtUserId")));
 			if (i == 0) {
@@ -82,7 +91,7 @@ public class CR46 {
 				driver.findElement(By.id("txtUserId")).sendKeys("support0");
 
 				driver.findElement(By.id("txtPassword")).clear();
-				driver.findElement(By.id("txtPassword")).sendKeys(PASSWORDALL);
+				driver.findElement(By.id("txtPassword")).sendKeys(Password);
 
 				driver.findElement(By.id("rdbFedExLoginID")).click();
 
@@ -125,7 +134,7 @@ public class CR46 {
 				driver.findElement(By.id("txtUserId")).sendKeys("support1");
 
 				driver.findElement(By.id("txtPassword")).clear();
-				driver.findElement(By.id("txtPassword")).sendKeys(PASSWORDALL);
+				driver.findElement(By.id("txtPassword")).sendKeys(Password);
 
 				driver.findElement(By.id("rdbFedExLoginID")).click();
 
@@ -174,7 +183,7 @@ public class CR46 {
 				driver.findElement(By.id("txtUserId")).sendKeys("support2");
 
 				driver.findElement(By.id("txtPassword")).clear();
-				driver.findElement(By.id("txtPassword")).sendKeys(PASSWORDALL);
+				driver.findElement(By.id("txtPassword")).sendKeys(Password);
 
 				driver.findElement(By.id("rdbFedExLoginID")).click();
 
@@ -221,9 +230,9 @@ public class CR46 {
 				driver.findElement(By.id("txtUserId")).sendKeys("support3");
 
 				driver.findElement(By.id("txtPassword")).clear();
-				// driver.findElement(By.id("txtPassword")).sendKeys(PASSWORDALL);
+				driver.findElement(By.id("txtPassword")).sendKeys(Password);
 				// Production
-				driver.findElement(By.id("txtPassword")).sendKeys(PASSWORDS3);
+				// driver.findElement(By.id("txtPassword")).sendKeys(PASSWORDS3);
 
 				driver.findElement(By.id("rdbFedExLoginID")).click();
 
@@ -297,7 +306,8 @@ public class CR46 {
 		// String subject = "DEV Automation : CR_46 Smoke Testing Result";
 		// String subject = "Staging Automation : CR_46 Smoke Testing Result";
 		// String subject = "Pre-Production Automation : CR_46 Smoke Testing Result";
-		String subject = "Production Automation : CR_46 Smoke Testing Result";
+		String Env = storage.getProperty("Env");
+		String subject = "Selenium Automation Script: " + Env + " : CR46 Smoke Testing";
 		try {
 			// Email.sendMail("parth.doshi@samyak.com", subject, msg.toString(), "");
 			Email.sendMail(
