@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [CR46 Smoke]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="CR46(failed)">
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="none" name="Failed suite [CR46 Smoke]">
+  <test parallel="none" name="CR46(failed)">
     <classes>
       <class name="CR46.CR46">
         <methods>
           <include name="startUp"/>
           <include name="cr46"/>
-          <include name="end"/>
         </methods>
       </class> <!-- CR46.CR46 -->
     </classes>

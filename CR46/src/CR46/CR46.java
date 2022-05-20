@@ -39,7 +39,7 @@ public class CR46 {
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
 		// options.addArguments("--headless");
-		options.addArguments("--incognito");
+		// options.addArguments("--incognito");
 		options.addArguments("--test-type");
 		options.addArguments("--no-proxy-server");
 		options.addArguments("--proxy-bypass-list=*");
@@ -72,18 +72,29 @@ public class CR46 {
 		for (int i = 0; i < 4; i++) {
 			String Env = storage.getProperty("Env");
 			String Password = null;
+			String Password3 = null;
+			System.out.println("ENV==" + Env);
 			if (Env.equalsIgnoreCase("Pre-Prod")) {
 				String baseUrl = storage.getProperty("PREPRODURL");
 				driver.get(baseUrl);
 				Password = storage.getProperty("PREPRODPassword");
+				Password3 = Password;
 			} else if (Env.equalsIgnoreCase("STG")) {
 				String baseUrl = storage.getProperty("STGURL");
 				driver.get(baseUrl);
 				Password = storage.getProperty("STGPassword");
+				Password3 = Password;
 			} else if (Env.equalsIgnoreCase("DEV")) {
 				String baseUrl = storage.getProperty("DEVURL");
 				driver.get(baseUrl);
 				Password = storage.getProperty("DEVPassword");
+				Password3 = Password;
+			} else if (Env.equalsIgnoreCase("Prod")) {
+				String baseUrl = storage.getProperty("PRODURL");
+				driver.get(baseUrl);
+				Password = storage.getProperty("ProdSPwd0To2");
+				Password3 = storage.getProperty("ProdSPwd3");
+
 			}
 			Thread.sleep(2000);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("txtUserId")));
@@ -232,7 +243,7 @@ public class CR46 {
 				driver.findElement(By.id("txtUserId")).sendKeys("support3");
 
 				driver.findElement(By.id("txtPassword")).clear();
-				driver.findElement(By.id("txtPassword")).sendKeys(Password);
+				driver.findElement(By.id("txtPassword")).sendKeys(Password3);
 				// Production
 				// driver.findElement(By.id("txtPassword")).sendKeys(PASSWORDS3);
 
@@ -312,9 +323,11 @@ public class CR46 {
 		String subject = "Selenium Automation Script: " + Env + " : CR46 Smoke Testing";
 		try {
 			// Email.sendMail("parth.doshi@samyak.com", subject, msg.toString(), "");
+
 			Email.sendMail(
 					"parth.doshi@samyak.com,asharma@samyak.com,ravina.prajapati@samyak.com,pgandhi@samyak.com,manthan.doshi@samyak.com,urvashi.Patel@samyak.com",
 					subject, msg.toString(), "");
+
 		} catch (Exception ex) {
 			Logger.getLogger(CR46.class.getName()).log(Level.SEVERE, null, ex);
 		}
