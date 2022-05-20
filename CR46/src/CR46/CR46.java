@@ -1,5 +1,6 @@
 package CR46;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -29,10 +30,11 @@ public class CR46 {
 
 	@BeforeSuite
 	public void startUp() throws IOException, InterruptedException {
-		/*
-		 * storage = new Properties(); FileInputStream fi = new
-		 * FileInputStream(".\\src\\TestFiles\\config.properties"); storage.load(fi);
-		 */
+
+		storage = new Properties();
+		FileInputStream fi = new FileInputStream(".\\src\\config.properties");
+		storage.load(fi);
+
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
