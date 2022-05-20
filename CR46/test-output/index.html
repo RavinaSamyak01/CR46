@@ -2,10 +2,12 @@
 
 <html>
   <head>
+  <meta charset='utf-8'>
   <title>TestNG reports</title>
 
-    <link type="text/css" href="testng-reports.css" rel="stylesheet" />  
-    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="testng-reports.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type='text/javascript'>
@@ -22,6 +24,7 @@
   <body>
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
       <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
@@ -37,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-CR46_Smoke" class="navigator-link">
-              <span class="suite-name border-skipped">CR46 Smoke</span>
+              <span class="suite-name border-passed">CR46 Smoke</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -90,21 +93,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,  1 skipped,  </span>
+                    <span class="method-stats">1 method,   1 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title skipped">Skipped methods</span>
-                    <span class="show-or-hide-methods skipped">
-                      <a href="#" panel-name="suite-CR46_Smoke" class="hide-methods skipped suite-CR46_Smoke"> (hide)</a> <!-- hide-methods skipped suite-CR46_Smoke -->
-                      <a href="#" panel-name="suite-CR46_Smoke" class="show-methods skipped suite-CR46_Smoke"> (show)</a> <!-- show-methods skipped suite-CR46_Smoke -->
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-CR46_Smoke" class="hide-methods passed suite-CR46_Smoke"> (hide)</a> <!-- hide-methods passed suite-CR46_Smoke -->
+                      <a href="#" panel-name="suite-CR46_Smoke" class="show-methods passed suite-CR46_Smoke"> (show)</a> <!-- show-methods passed suite-CR46_Smoke -->
                     </span>
-                    <div class="method-list-content skipped suite-CR46_Smoke">
+                    <div class="method-list-content passed suite-CR46_Smoke">
                       <span>
-                        <img src="skipped.png" width="3%"/>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-CR46_Smoke" title="CR46.CR46" class="method navigator-link" hash-for-method="cr46">cr46</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content skipped suite-CR46_Smoke -->
+                    </div> <!-- method-list-content passed suite-CR46_Smoke -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -116,9 +119,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-CR46_Smoke" class="panel CR46_Smoke">
-          <div class="suite-CR46_Smoke-class-skipped">
+          <div class="suite-CR46_Smoke-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="skipped.png"/>
+              <img src="passed.png"/>
               <span class="class-name">CR46.CR46</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -130,7 +133,7 @@
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-CR46_Smoke-class-skipped -->
+          </div> <!-- suite-CR46_Smoke-class-passed -->
         </div> <!-- panel CR46_Smoke -->
         <div panel-name="test-xml-CR46_Smoke" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -139,8 +142,8 @@
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite parallel=&quot;none&quot; name=&quot;CR46 Smoke&quot;&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;CR46 Smoke&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;CR46&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;CR46.CR46&quot;/&gt;
@@ -187,12 +190,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'cr46')
 data.setCell(0, 2, 'CR46.CR46')
-data.setCell(0, 3, 1);
+data.setCell(0, 3, 118148);
 window.suiteTableData['CR46_Smoke']= { tableData: data, tableDiv: 'times-div-CR46_Smoke'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 ms</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-CR46_Smoke">
               </div> <!-- times-div-CR46_Smoke -->
             </div> <!-- times-div -->
@@ -220,18 +223,21 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">CR46.CR46</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">startUp</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="test-method">
                 <span class="method-name">cr46</span>
-                <span class="method-start">583 ms</span>
+                <span class="method-start">6961 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-suite after">
+                <span class="method-name">end</span>
+                <span class="method-start">125142 ms</span>
+              </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->
     </div> <!-- wrapper -->
   </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
 </html>

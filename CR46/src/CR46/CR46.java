@@ -38,8 +38,8 @@ public class CR46 {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions options = new ChromeOptions();
-		// options.addArguments("--headless");
-		// options.addArguments("--incognito");
+		options.addArguments("--headless");
+		options.addArguments("--incognito");
 		options.addArguments("--test-type");
 		options.addArguments("--no-proxy-server");
 		options.addArguments("--proxy-bypass-list=*");
@@ -324,10 +324,11 @@ public class CR46 {
 		try {
 			// Email.sendMail("parth.doshi@samyak.com", subject, msg.toString(), "");
 
-			Email.sendMail(
-					"parth.doshi@samyak.com,asharma@samyak.com,ravina.prajapati@samyak.com,pgandhi@samyak.com,manthan.doshi@samyak.com,urvashi.Patel@samyak.com",
-					subject, msg.toString(), "");
-
+			/*
+			 * Email.sendMail(
+			 * "parth.doshi@samyak.com,asharma@samyak.com,ravina.prajapati@samyak.com,pgandhi@samyak.com,manthan.doshi@samyak.com,urvashi.Patel@samyak.com",
+			 * subject, msg.toString(), "");
+			 */
 		} catch (Exception ex) {
 			Logger.getLogger(CR46.class.getName()).log(Level.SEVERE, null, ex);
 		}
